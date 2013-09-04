@@ -1,0 +1,13 @@
+<div style="position:relative;text-align:center;top:50px;">
+	<form action='<%= route%>' method='post'>
+		用户名<input type='text' id='username' name='username' />
+		口令<input type='password' id='password' name='password' />
+		重复输入口令<input type='password' id='password_repeat' name='password_repeat' />
+		<input style="position:relative;text-align:center;top:-5px;left:10px;"type='submit' value='<%= title%>' />
+	</form>
+	<br />
+<% if(error) { %>
+	<%= error%>
+<% } %>
+</div>
+<script src='/javascripts/<%= menu_css%>'></script>

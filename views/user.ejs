@@ -1,0 +1,11 @@
+<div>
+<%if(user != undefined) { %>
+<% user.forEach(function(i){ %>
+	<p><%= i.content %><a href='/edit/<%= login_user.name %>?content=<%= i.content %>'>编辑</a></p>
+<% } ) %>
+<% } %>
+<% if(success) { %>
+	<%= success%>
+<% } %>
+</div>
+<script src='/javascripts/<%= menu_css%>'></script>

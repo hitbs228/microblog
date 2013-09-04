@@ -1,0 +1,21 @@
+    <p>Welcome to myspace</p>
+    <% if(login_user) { %>
+        <form action='/post' method='post'>
+            <input type='text' name='content' />
+            <input style="position:relative;top:-6px;" type='submit' value='发言' />
+        </form>
+    <% } %>
+    <p>
+        <% if(success) { %><%= success%><% } %>
+    </p>
+    <p>
+        <% if(error) { %>
+            <%= error%>
+        <% } %>
+    </p>
+    <div class='span4'>
+    <% if(users) { users.forEach(function(i) { %>
+        <p><%= i.user%>说：<%= i.content%></p>
+    <% } ) }%>
+    </div>
+    <script src='/javascripts/menu_main.js'></script>

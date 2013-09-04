@@ -1,0 +1,7 @@
+<form action='/edit/<%= login_user.name%>' method='post'>
+	<input type='text' id='content' name='content' <% if(content) { %>value='<%= content%>'<% } %> />
+	<input type='submit' value='修改' />
+</form>
+<% if(error) {%>
+	<%= error%>
+<% } %>
