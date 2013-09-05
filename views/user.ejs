@@ -1,7 +1,18 @@
 <div>
+<script type="text/javascript">
+	function del_confirm(content,name){
+		var note = confirm('确定要删除这条发言吗？');
+
+		if(note){
+			window.location.href='/delete?content=' + content ;
+		}else{
+			window.location.href='/u/' + name;
+		}
+	}
+</script>
 <%if(user != undefined) { %>
 <% user.forEach(function(i){ %>
-	<p><%= i.content %><a href='/edit/<%= login_user.name %>?content=<%= i.content %>'>编辑</a></p>
+	<p><%= i.content %><a href='/edit/<%= login_user.name %>?content=<%= i.content %>'>编辑</a><a onclick="del_confirm('<%= i.content%>','<%= login_user.name%>')">删除</a></p>
 <% } ) %>
 <% } %>
 <% if(success) { %>

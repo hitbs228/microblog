@@ -188,7 +188,6 @@ exports.edit = function(req, res){
 };
 
 exports.doEdit = function(req, res){
-	console.log(333);
 	if(!req.body.content){
 		req.flash('error','发表内容为空，请输入内容！');
 		return res.redirect('/edit/'+req.session.user.name);
@@ -208,6 +207,25 @@ exports.doEdit = function(req, res){
 				db.sync();
 				req.flash('success','修改成功！');
 				res.redirect('/u/' + req.session.user.name);
+			});
+		});
+	});
+};
+
+exports.delete = function(req, res){
+	orm.connect(config.opts,function(err,db){
+		if(err) throw err;
+
+		var user = db.define('content',{
+			user:String,
+			content:String
+		});
+
+		user.find({user:req.session.user.name,content:req.query.content},function(err, people){
+			people[0].remove(function(err){
+				db.sync();
+				req.flash('success','删除成功！');
+				res.redirect('/u/'+req.session.user.name);
 			});
 		});
 	});
